@@ -1,21 +1,21 @@
 #include "Level1.h"
 //#include "Util.h"
-#define LEVEL1_WIDTH 25
+#define LEVEL1_WIDTH 36
 #define LEVEL1_HEIGHT 8
 
-#define ENEMIES_COUNT 2
+#define ENEMIES_COUNT 3
 
 
 unsigned int level1_data[] =
 {
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,0,0,0,0,0,0,0,0,0,0,0,
-    3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,0,0,1,1,1,1,1,1,1,1,1,
-    3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,0,0,2,2,2,2,2,2,2,2,2,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+    3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,0,0,1,1,1,2,1,1,1,2,0,0,0,1,1,1,1,1,1,1,1,1,
+    3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,0,0,2,2,2,2,2,2,2,2,0,0,0,2,2,2,2,2,2,2,2,2,
 };
 
 Entity level1_enemies[ENEMIES_COUNT];
@@ -73,6 +73,15 @@ void Level1::Initialize() {
     state.enemies[1].aiState = WALKING;
     state.enemies[1].aiType = PAPARAZZI;
     state.enemies[1].velocity = glm::vec3(1.0f, 0.001f, 0);
+    
+    state.enemies[2].entityType = ENEMY;
+    state.enemies[2].textureID = Util::LoadTexture("papa.png");
+    state.enemies[2].acceleration = glm::vec3(0, -9.81f, 0);
+    state.enemies[2].isStatic = false;
+    state.enemies[2].position = glm::vec3(34, -2.25, 0);
+    state.enemies[2].aiState = WALKING;
+    state.enemies[2].aiType = PAPARAZZI;
+    state.enemies[2].velocity = glm::vec3(1.0f, 0.001f, 0);
 
 }
 
@@ -107,7 +116,7 @@ void Level1::Update(float deltaTime, int& lives) {
         //state.nextLevel = 1;
     }
 
-    if (state.player.position.x > 23) {
+    if (state.player.position.x > 35) {
         state.nextLevel = 2;
     }
 }

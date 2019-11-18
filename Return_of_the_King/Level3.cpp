@@ -3,7 +3,7 @@
 #define LEVEL3_WIDTH 39
 #define LEVEL3_HEIGHT 8
 
-#define ENEMIES_COUNT 1
+#define ENEMIES_COUNT 3
 //#define JOOMBA_COUNT 1
 
 unsigned int level3_data[] =
@@ -69,13 +69,31 @@ void Level3::Initialize() {
     
     state.enemies = level3_enemies;
     state.enemies[0].entityType = ENEMY;
-    state.enemies[0].textureID = Util::LoadTexture("me.png");
+    state.enemies[0].textureID = Util::LoadTexture("papa.png");
     state.enemies[0].acceleration = glm::vec3(0, -9.81f, 0);
     state.enemies[0].isStatic = false;
     state.enemies[0].position = glm::vec3(20, -2.25, 0);
     state.enemies[0].aiState = WALKING;
     state.enemies[0].aiType = PAPARAZZI;
     state.enemies[0].velocity = glm::vec3(1.0f, 0.001f, 0);
+    
+    state.enemies[1].entityType = ENEMY;
+    state.enemies[1].textureID = Util::LoadTexture("papa.png");
+    state.enemies[1].acceleration = glm::vec3(0, -9.81f, 0);
+    state.enemies[1].isStatic = false;
+    state.enemies[1].position = glm::vec3(1, -2.25, 0);
+    state.enemies[1].aiState = WALKING;
+    state.enemies[1].aiType = PAPARAZZI;
+    state.enemies[1].velocity = glm::vec3(1.0f, 0.001f, 0);
+    
+    state.enemies[2].entityType = ENEMY;
+    state.enemies[2].textureID = Util::LoadTexture("me.png");
+    state.enemies[2].acceleration = glm::vec3(0, -9.81f, 0);
+    state.enemies[2].isStatic = false;
+    state.enemies[2].position = glm::vec3(38, -2.25, 0);
+    state.enemies[2].aiState = WALKING;
+    state.enemies[2].aiType = PAPARAZZI;
+    state.enemies[2].velocity = glm::vec3(1.0f, 0.001f, 0);
     
 }
 

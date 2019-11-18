@@ -32,7 +32,7 @@ void Entity::CheckCollisionsY(Entity *objects, int objectCount)
 {
     for (int i = 0; i < objectCount; i++)
     {
-        Entity object = objects[i];
+        Entity& object = objects[i];
         
         if (CheckCollision(object))
         {
@@ -65,18 +65,14 @@ void Entity::CheckCollisionsY(Entity *objects, int objectCount)
                     object.isActive = false;
                 }
             }
-            else if (velocity.y == 0) {
-                position.y += penetrationY;
-                velocity.y = 0;
-                collidedBottom = true;
-                
-                if (entityType == PLAYER && object.entityType == ENEMY)
-                {
-                    //std :: cout << "YES" << std::endl;
-                    object.isActive = false;
-                }
-            }
         }
+        /*
+        std :: cout << collidedBottom << std :: endl;
+        if(entityType == PLAYER && object.entityType == ENEMY && collidedBottom){
+            std :: cout << "collidedBottom" << std :: endl;
+            object.isActive = false;
+        }
+         */
     }
 }
 
@@ -84,7 +80,7 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
 {
     for (int i = 0; i < objectCount; i++)
     {
-        Entity object = objects[i];
+        Entity& object = objects[i];
         
         if (CheckCollision(object))
         {
@@ -279,7 +275,7 @@ void Entity::AIPaparazzi(Entity player, Map* map) {
                 CheckSlideOffLedge(map);
                 //velocity.x = 0;
             }
-            if (glm::distance(position, player.position) < 2.5f){
+            if (glm::distance(position, player.position) < 4.5f){
                 aiState = RUNNING;
                 velocity.x = 3.5;
                 timer = 50.0f;
